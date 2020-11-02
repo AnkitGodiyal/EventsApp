@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.ankit.insiderapp.model.MasterListEventModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/event_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/event_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/orange"
+                android:elevation="12dp"
+                android:padding="4dp"
+                android:textSize="10sp"
+                android:textAllCaps="true"
+                android:text="@{model.categoryInfo.cat_name}"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Theater" />
+
+            <ImageView
+                android:id="@+id/event_iv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/bg_default_event" />
+
+            <TextView
+                android:id="@+id/event_name"
+                style="@style/ItemTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="start"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:minLines="2"
+                android:text="@{model.eventName}"
+                app:layout_constraintTop_toBottomOf="@+id/event_iv"
+                tools:text="Make a card to make someone's day" />
+
+            <TextView
+                android:id="@+id/event_venue"
+                style="@style/ItemTextAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="marquee"
+                android:gravity="start"
+                android:singleLine="true"
+                android:text="@{model.eventVenueName}"
+                app:layout_constraintTop_toBottomOf="@+id/event_name"
+                tools:text="Online" />
+
+            <TextView
+                android:id="@+id/event_date"
+                style="@style/ItemTextAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:ellipsize="marquee"
+                android:gravity="start"
+                android:singleLine="true"
+                android:text="@{model.eventVenueDateString}"
+                app:layout_constraintTop_toBottomOf="@+id/event_venue"
+                tools:text="Sign Up" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/bottom_barrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="event_date" />
+
+            <TextView
+                android:id="@+id/event_price"
+                style="@style/ItemTextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="bottom"
+                android:maxLines="2"
+                android:minLines="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bottom_barrier"
+                tools:text="FREE" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
